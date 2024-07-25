@@ -2,7 +2,7 @@ FROM python
 
 RUN pip install fastapi uvicorn
 
-COPY first-app.py first-app.py
+COPY first-app.py app/main.py
 
 EXPOSE 9080
 
