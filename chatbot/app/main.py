@@ -15,3 +15,9 @@ def read_item():
 @app.get("/second/tt")
 def create_item():
     return "test2"
+
+# POST 요청 처리
+@app.get("/second/tttt")
+def create_item():
+    return "test2"
+
