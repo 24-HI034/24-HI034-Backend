@@ -16,5 +16,7 @@ def read_item():
 def create_item():
     return "test2"
 
-
+@app.get("/chatbot/ttttt")
+def create_item():
+    return "test2"
 
