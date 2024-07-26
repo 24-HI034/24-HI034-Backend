@@ -7,8 +7,9 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-
+    runs-on: ubuntu-latest  
+    outputs:
+      TAG: ${{ steps.extract_tag.outputs.TAG }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -31,5 +32,31 @@ jobs:
           platforms: linux/amd64,linux/arm64
           cache-from: type=gha
           cache-to: type=gha, mode=max
+  push:
+    name: Push Manifests
+    needs: build
+    runs-on: ubuntu-latest
+    env:
+      TAG: ${{needs.build.outputs.TAG}}
+    steps:
+      - name : Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Change manifest
+        run : sed -i "s|matkimchi/chatbot:latest|matkimchi/chatbot:latest" "k8s/application.yml"
+      
+      - name: git push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config credential.helper store
+          git add k8s/application.yml
+          git commit -m "Update chatbot image"
+          git push
+
+
+    
+
+
 
       
