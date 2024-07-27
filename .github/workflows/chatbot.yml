@@ -53,6 +53,8 @@ jobs:
           git add k8s/application.yml
           git commit -m "Update chatbot image"
           git push
+        with:
+          github_token: ${{ secrets.GH_TOKEN }}
 
 
     
