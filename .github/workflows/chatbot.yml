@@ -45,14 +45,17 @@ jobs:
       - name: Change manifest
         run : sed -i "s|matkimchi/chatbot:[^ ]*|matkimchi/chatbot:${{env.TAG}}|" "k8s/application.yml"
       
-      - name: git push
+      - name: Commit files
         run: |
-          git config user.name "kyounghoonJang"
-          git config user.email "matkimchi_@naver.com"
-          git remote set-url origin "https://${{ secrets.GH_TOKEN }}@github.com/24-HI034/24-HI034-Backend.git"
-          git add k8s/application.yml
-          git commit -m "Update chatbot image"
-          git push
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git commit -a -m "Add changes"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GH_TOKEN }}
+          branch: main
 
 
 
