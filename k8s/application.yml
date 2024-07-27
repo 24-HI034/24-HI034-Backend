@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: chatbot
-        image: matkimchi/chatbot:latest
+        image: matkimchi/chatbot:15
         imagePullPolicy: Always
         ports:
         - containerPort: 9080
