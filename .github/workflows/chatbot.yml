@@ -47,14 +47,13 @@ jobs:
       
       - name: git push
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config credential.helper store
+          git config user.name "kyounghoonJang"
+          git config user.email "matkimchi_@naver.com"
+          git remote add origin https://:${{secrets.GH_TOKEN}}@github.com/24-HI034/24-HI034-Backend
           git add k8s/application.yml
           git commit -m "Update chatbot image"
           git push
-        with:
-          github_token: ${{ secrets.GH_TOKEN }}
+
 
 
     
