@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>소셜로그인 예제</title>
+</head>
+<body>
+<div>
+    <p><a th:href="@{${kakaoUrl}}">카카오로그인</a></p>
+</div>
+
+<a href="https://kauth.kakao.com/oauth/logout?client_id=5b8074ae8bb9768a3567d0e3da5bf068&logout_redirect_uri=http://localhost:8080/logout">
+    카카오 로그아웃
+</a>
+
+</body>
+</html>
